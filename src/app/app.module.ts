@@ -1,18 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 
-import { AppRoutingModule } from './app-routing.module';
+import { DataService } from './service/data.service';
+
 import { AppComponent } from './app.component';
+import { DialogComponent } from './dialog.component';
+import { DetailComponent } from './detail/detail.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    FormsModule,
+    MatGridListModule,
+    MatButtonToggleModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatButtonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [DialogComponent],
+  providers: [DataService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

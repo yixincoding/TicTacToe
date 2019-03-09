@@ -1,0 +1,11 @@
+<div *ngIf="tictac.isTaken == 0">
+  <div *ngFor="let item of tictac.placeArray; let i = index" style="display:inline;">
+    <i class="material-icons" [ngStyle]="{'font-size.px':24 * fontSize}" (click)="onClick(item, i)">{{item.icon}}</i>
+    <div *ngIf="(i+1)%3 == 0">
+      <br>
+    </div>
+  </div>
+</div>
+<div *ngIf="tictac.isTaken != 0" style="color: rgba(0,0,0,0.7);" >
+  <i class="material-icons" style="font-size:120px">{{iconArr[tictac.isTaken]}}</i>
+</div>

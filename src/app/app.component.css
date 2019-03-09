@@ -1,0 +1,20 @@
+.activeBorder{
+    border:5px solid red;
+}
+
+mat-grid-tile{
+    background-color: #F2EBD5;
+}
+
+.example-radio-group {
+    display: inline-flex;
+    /* flex-direction: column; */
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .example-selected-value {
+    margin: 15px 0;
+  }
