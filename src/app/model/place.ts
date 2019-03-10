@@ -6,7 +6,7 @@ export class Place {
 export class PlaceGroup {
     placeArray: Place[];
     isTaken: number; // 1: lens, 3: star
-    constructor(){
+    constructor() {
         this.placeArray = [];
         this.isTaken = -1;
     }

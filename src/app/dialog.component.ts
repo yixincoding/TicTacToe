@@ -2,8 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-    selector: 'dialog-overview-example-dialog',
-    template: "<div *ngFor='let item of data.rule'><p>{{item}}</p></div>"
+    templateUrl: 'dialog.component.html'
 })
 export class DialogComponent {
 

@@ -9,7 +9,7 @@ import { DataService } from '../service/data.service';
 })
 export class DetailComponent implements OnInit {
 
-  @Input() 
+  @Input()
   tictac: PlaceGroup;
 
   @Input()
@@ -18,24 +18,32 @@ export class DetailComponent implements OnInit {
   @Input()
   tictacIndex: number;
 
+  // tslint:disable-next-line:no-output-rename
   @Output('update')
   change: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
-    private dataService: DataService 
-  ) { 
+    private dataService: DataService
+  ) {
   }
 
-  iconArr: string [] = [
-    "crop_square",
-    "lens",
-    "star"
+  iconArr: string[] = [
+    'crop_square',
+    'lens',
+    'star'
   ];
 
-  onClick(item: Place, index: number){
-    if (this.dataService.getActiveTicTac() == -2){
+  onClick(item: Place, index: number) {
+    if (this.dataService.getActiveTicTac() === -2) {
       this.dataService.setActiveTicTac(this.tictacIndex);
-    } else if (this.tictac.isTaken == 0 && item.index == 0 && (this.dataService.getActiveTicTac() == this.tictacIndex || this.dataService.getActiveTicTac() == -1 )){
+    } else if (
+      this.tictac.isTaken === 0
+      && item.index === 0
+      && (
+        this.dataService.getActiveTicTac() === this.tictacIndex
+        || this.dataService.getActiveTicTac() === -1
+      )
+    ) {
       this.tictac.placeArray[index].index = this.dataService.getTurn();
       this.tictac.placeArray[index].icon = this.iconArr[this.dataService.getTurn()];
 
@@ -49,21 +57,31 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  checkTaken(index: number){
-    let _turn: number = this.dataService.getTurn();
-    let x: number = Math.floor(index/3);
-    let y: number = index % 3;
-    if (this.tictac.placeArray[x*3 + (y+1)%3].index == _turn && this.tictac.placeArray[x*3 + (y+2)%3].index == _turn){
+  checkTaken(index: number) {
+    const _turn: number = this.dataService.getTurn();
+    const x: number = Math.floor(index / 3);
+    const y: number = index % 3;
+    if (this.tictac.placeArray[x * 3 + (y + 1) % 3].index === _turn && this.tictac.placeArray[x * 3 + (y + 2) % 3].index === _turn) {
       this.tictac.isTaken = _turn; // row
-    } else if (this.tictac.placeArray[y + (x+1)%3 * 3].index == _turn && this.tictac.placeArray[y + (x+2)%3 * 3].index == _turn){
+    } else if (this.tictac.placeArray[y + (x + 1) % 3 * 3].index === _turn && this.tictac.placeArray[y + (x + 2) % 3 * 3].index === _turn) {
       this.tictac.isTaken = _turn; // column
-    } else if (x == y && (this.tictac.placeArray[(x+1)%3*3 + (y+1)%3].index == _turn && this.tictac.placeArray[(x+2)%3*3 + (y+2)%3].index == _turn)){
+    } else if (
+      x === y && (
+        this.tictac.placeArray[(x + 1) % 3 * 3 + (y + 1) % 3].index === _turn
+        && this.tictac.placeArray[(x + 2) % 3 * 3 + (y + 2) % 3].index === _turn
+      )
+    ) {
       this.tictac.isTaken = _turn; // left dig
-    } else if ( x+y == 2 && (this.tictac.placeArray[(x+2)%3*3 + (y+1)%3].index == _turn && this.tictac.placeArray[(x+1)%3*3 + (y+2)%3].index == _turn)){
+    } else if (
+      x + y === 2 && (
+        this.tictac.placeArray[(x + 2) % 3 * 3 + (y + 1) % 3].index === _turn
+        && this.tictac.placeArray[(x + 1) % 3 * 3 + (y + 2) % 3].index === _turn
+      )
+    ) {
       this.tictac.isTaken = _turn;
     } else {
-      for (let i = 0; i < 9; i++){
-        if (this.tictac.placeArray[i].index == 0) return;
+      for (let i = 0; i < 9; i++) {
+        if (this.tictac.placeArray[i].index === 0) { return; }
       }
       this.tictac.isTaken = 3; // no one takes.
     }

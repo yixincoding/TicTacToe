@@ -6,28 +6,28 @@ export class DataService {
   _activeTicTac: number; // from 0 to 8
 
   constructor() { }
-  
-  getTurn(){
+
+  getTurn() {
     return this._turn;
   }
 
-  setTurn(num: number){
+  setTurn(num: number) {
     this._turn = num;
   }
 
-  nextTurn(){
+  nextTurn() {
     this._turn = 3 - this._turn;
   }
 
-  getLastTurn(){
+  getLastTurn() {
     return 3 - this._turn;
   }
 
-  getActiveTicTac(){
+  getActiveTicTac() {
     return this._activeTicTac;
   }
 
-  setActiveTicTac(num: number){
+  setActiveTicTac(num: number) {
     this._activeTicTac = num;
   }
 
