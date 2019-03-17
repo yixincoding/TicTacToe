@@ -30,7 +30,8 @@ export class DetailComponent implements OnInit {
   iconArr: string[] = [
     'crop_square',
     'lens',
-    'star'
+    'star',
+    'remove'
   ];
 
   onClick(item: Place, index: number) {
